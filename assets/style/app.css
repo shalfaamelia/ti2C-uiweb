@@ -1,0 +1,42 @@
+body {
+    background-color:rgb(212, 151, 151);
+}
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+}
+.profileImage{
+    width: 200px;
+    height: 200px;
+}
+.profile h1 {
+    padding-top: 20px;
+    color:white; 
+    padding-bottom: 20px;
+}
+.profile h4 {
+    color:rgb(160, 84, 84);
+}
+.profile h5{
+    color: rgb(160, 84, 84);
+    padding-bottom: 85px;
+}
+.aboutMe {
+    background-color:rgb(233, 180, 180);
+    padding-top: 55px;
+    padding-bottom: 75px;
+}
+.row {
+    padding: 10px 20px;
+}
+.contact{
+    padding-top: 30px;
+}
+.contact a {
+    color: white;
+    padding-bottom: 20px;
+    font-size: 30px;
+}
