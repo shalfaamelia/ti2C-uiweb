@@ -1,0 +1,154 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tugas Javascript</title>
+            <style>
+            body{
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                background-color:lavender;
+                margin: 20px;
+                padding: 0;
+            }
+            .container{
+                width: 400px;
+                background-color:white;
+                border-radius: 8px;
+                padding: 20px;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            }
+            h1{
+                text-align: center;
+                color: rgb(0, 0, 80);
+                margin-bottom: 30px;
+            }
+            h2{
+                text-align: center;
+                color: midnightblue;
+            }
+            h4{
+                margin-bottom: 5px;
+                color: midnightblue;
+            }
+            label{
+                color: midnightblue;
+                display:block;
+                margin-top: 10px;
+            }
+            input{
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                width: 100%;
+                padding: 8px;
+                margin-top: 5px;
+                margin-bottom: 10px;
+                box-sizing: border-box;
+            }
+            button{
+                background-color:indigo;
+                color: aliceblue;
+                cursor: pointer;
+                padding: 10px 30px;
+                margin-top: 15px;
+            }
+            button:hover{
+                background-color:darkslateblue;
+            }
+            table{
+                border-collapse: collapse;
+                width: 100%;
+                margin-top: 15px;
+            }
+            th, td {
+                padding:10px;
+                color: midnightblue;
+                border: 1px solid;
+                text-align: center;
+            }
+            th{
+                background-color: indigo;
+                color: aliceblue;
+            }
+        </style>
+        </head>
+    <body>
+        <div id="container">
+            <h1>INPUT DATA MAHASISWA</h1>
+        <form id="studentForm"> 
+            <h4>Masukkan NIM Anda!</h4>
+            <label for="nim">NIM:</label>
+            <input type="number" id="nim" name="nim" type="text">
+            <h4>Masukkan Nama Anda!</h4>
+            <label for="name">Nama:</label>
+            <input type="text" id="name" name="name" type="text">
+            <h4>Pastikan NIM dan Nama Sudah Benar, Klik Save!</h4>
+            <button type="button" onclick="saveStudent()">Save</button>
+            <br><br>
+        </form>
+        
+        <table id="studentTable">
+            <h2>DATA MAHASISWA</h2>
+            <thead>
+            <tr>
+                <th style="width:40% ;">NIM</th>
+                <th style="width:70% ;">Nama</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        </div>
+
+        <script>
+            // Define array untuk list mahasiswa
+            var arrStudent = [];
+
+            // Define object mahasiswa
+            function Student(nim,name) {
+                this.nim = nim;
+                this.name = name;
+            }
+
+            // Fungsi simpan data mahasiswa
+            function saveStudent() {
+                
+                // Deklarasi variable dari id element input
+                var studentForm = document.getElementById("studentForm");
+                var nim = document.getElementById("nim").value;
+                var name = document.getElementById("name").value;
+                
+                // Buat student object baru
+                var student = new Student(nim,name);
+                arrStudent.push(student);
+
+                // Reset Form
+                studentForm.reset();
+
+                // Tampilkan data yang ditambahkan >> fungsi show
+                showStudent(student);
+
+                // Tampilkan log dan simpan data ke array
+                console.log(student);
+                console.log(arrStudent);
+                showStudentList(student);
+            }
+            
+            // Menampilkan data mahasiswa ke HTML
+            function showStudent(student) {    
+                var tbody = document.querySelector("#studentTable tbody");
+                var tr = document.createElement("tr");
+
+                // Buat kolom value NIM
+                var tdNim = document.createElement("td");
+                tdNim.textContent = student.nim;
+                tr.appendChild(tdNim);
+
+                // Buat kolom value Nama
+                var tdNama = document.createElement("td");
+                tdNama.textContent = student.name;
+                tr.appendChild(tdNama);
+                
+                tbody.appendChild(tr);
+            }
+        </script>
+    </body>
+</html>
